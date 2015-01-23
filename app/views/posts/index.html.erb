@@ -1,10 +1,8 @@
-<div class="container">
-  <% @posts.each do |post| %>
-  <aricle class="row">
-    <%= post.body %>
-    <footer>
-      Posted by <%= post.user.login %> at <%= post.created_at.to_formatted_s(:long) %>
-    </footer>
-  </aricle>
-  <% end %>
-</div>
+<% @posts.each do |post| %>
+<aricle class="row">
+  <%= post.body %>
+  <footer>
+    Posted by <%= post.user.login %> at <%= post.created_at.to_formatted_s(:long) %>
+  </footer>
+</aricle>
+<% end %>
