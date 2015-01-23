@@ -1,5 +1,8 @@
-<h1>Coming soon</h1>
-
 <% @posts.each do |post| %>
-  <%= post.body %>
+  <aricle>
+    <%= post.body %>
+    <footer>
+      Posted by <%= post.user.login %> at <%= post.created_at.to_formatted_s(:long) %>
+    </footer>
+  </aricle>
 <% end %>
