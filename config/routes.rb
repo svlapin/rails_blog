@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'posts#index'
   resources :posts, only: [:index, :create, :new]
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

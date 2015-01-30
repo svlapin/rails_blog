@@ -3,9 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_login(user_params.login)
-    # TODO
-    render 'new'
+    @user = User.find_by_login(user_params[:login])
+    if @user && @user.authenticate(user_params[:password])
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   private
