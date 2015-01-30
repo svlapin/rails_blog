@@ -4,11 +4,21 @@ class PostsController < ApplicationController
   end
 
   def new
+    if !session[:user_id]
+      redirect_to login_url
+    end
+
     @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
+    current_user = User.find(session[:user_id])
+
+    if !current_user
+      redirect_to login_url
+    end
+
+    @post = Post.new(post_params.merge(user: current_user))
 
     if @post.save
       redirect_to posts_path
